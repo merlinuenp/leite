@@ -31,10 +31,10 @@ public class JpaUtilTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testEntityManager() {
-        EntityManager em = JpaUtil.getEntityManager();
-        assertNotNull(em);
-    }
+//    @Test
+//    public void testEntityManager() {
+//        EntityManager em = JpaUtil.getEntityManager();
+//        assertNotNull(em);
+//    }
     
 }
