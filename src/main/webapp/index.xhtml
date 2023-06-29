@@ -5,12 +5,30 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Produção de Leite</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="geral.css"/>  
     </h:head>
     <h:body>
         <h:form >
-            <p:commandButton value="Entrar" action="menu"/>
+            <p:panel style="width: 20%; margin-left: 40%;  margin-top: 10%; ">
+                <p:outputPanel style="text-align: center; width:  100%">
+                    <h:graphicImage library="imagens" name="vaca2.png" />
+                    <h:panelGrid columns="2" >
+                        <p:outputLabel value="Login: "/>
+                        <p:inputText value="#{indexControle.usuario.login}" />
+                        <p:outputLabel value="Senha: "/>
+                        <p:password value="#{indexControle.usuario.senha}" />
+                    </h:panelGrid>     
+                </p:outputPanel>
+                <p:outputPanel style=" text-align: center">
+                    <p:commandButton value="Entrar" action="#{indexControle.autenticar()}"
+                                     update="@form" />
+                    <p:messages closable="true" showIcon="false" />
+                </p:outputPanel>
+            </p:panel>
+
+
         </h:form>
     </h:body>
 </html>
