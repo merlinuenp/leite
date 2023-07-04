@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Produção de Leite</title>
+    </h:head>
+    <h:body > 
+        <h:panelGrid columns="1" style="background-color: #6495ED; width: 100%; text-align: center;">
+            <h:outputText style="font-size: 36px; color: whitesmoke" value="SysLeite"/>
+        </h:panelGrid>
+        <h:panelGrid />
+        <h:form >
+            <h:panelGrid columns="3" 
+                         style= "width: 100%; background-color: #d2d2d2; text-align: center;">
+                <p:commandLink  action="usuarioGerenciar" value="Gerenciar usuários" 
+                                styleClass="linkMenu"/>
+                <p:commandLink  action="vacasGerenciar" value="Gerenciar vacas" 
+                                styleClass="linkMenu"/>
+                <p:commandLink action="index" value="Sair" 
+                               styleClass="linkMenu"/>
+            </h:panelGrid>
+        </h:form>
+        <h:panelGrid />
+
+        <p:fieldset legend="Novo usuário" toggleable="true" collapsed="true">
+            <h:form id="formNovo">
+                <h:panelGrid columns="2">                    
+                    <h:outputLabel value="Nome:  " />
+                    <p:inputText id="nome" 
+                                 value="#{gerenciarUsuarioControle.novoUsuario.nome}"
+                                 required="true" requiredMessage="Nome obrigatório"/>                   
+                    <h:outputLabel value="Login:  " />
+                    <p:inputText id="login" 
+                                 value="#{gerenciarUsuarioControle.novoUsuario.login}"
+                                 required="true" requiredMessage="Login obrigatório"/>
+                    <h:outputLabel value="Senha" />
+                    <p:password value="#{gerenciarUsuarioControle.novoUsuario.senha}"
+                                required="true" requiredMessage="Senha obrigatória"/>
+                    <p:commandButton value="cancelar" immediate="true" action="menu"/>
+                    <p:commandButton value="salvar" 
+                                     action="#{gerenciarUsuarioControle.salvar()}"
+                                     update="formNovo, :formTabela" />
+                </h:panelGrid>
+                <p:messages showIcon="false" closable="true"/>
+            </h:form>
+        </p:fieldset>
+
+        <h:form id="formTabela">
+            <p:dataTable id="tabelaUsuarios"
+                         value="#{gerenciarUsuarioControle.lista}"
+                         var="item"
+                         emptyMessage="Nenhum usuário cadastrado"
+                         tableStyle="width: auto">
+                <p:column headerText="ID">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Nome">
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+                <p:column headerText="Login">
+                    <h:outputText value="#{item.login}"/>
+                </p:column>
+                <p:column >
+                    <p:commandLink value="alterar" />
+                </p:column>
+                <p:column >
+                    <p:commandLink value="excluir" 
+                                   action="#{gerenciarUsuarioControle.excluir(item)}" 
+                                   update=":formTabela">
+                        <p:confirm header="Excluir usuário"
+                                   message="Tem certeza? "/>
+                    </p:commandLink>
+                </p:column>
+
+            </p:dataTable>
+            
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:outputPanel style="width: 100%; text-align:center" layout="block"> 
+                        <p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes"  />
+                        <p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no"  />
+                    </p:outputPanel>
+                </p:confirmDialog>
+            
+        </h:form>
+
+
+    </h:body>
+</html>

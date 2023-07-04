@@ -5,16 +5,25 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title>Sem título</title>
+        <title>Produção de Leite</title>
     </h:head>
     <h:body > 
+        <h:panelGrid columns="1" style="background-color: #6495ED; width: 100%; text-align: center;">
+            <h:outputText style="font-size: 36px; color: whitesmoke" value="SysLeite"/>
+        </h:panelGrid>
+        <h:panelGrid />
         <h:form >
-            <p:commandLink  action="novoUsuario" value="Novo usuário" />
-            <p/>
-            <p:commandLink  action="vacasGerenciar" value="Gerenciar vacas" />
-            <p/>
-            <p:commandLink action="index" value="Sair" />
-        </h:form>   
+            <h:panelGrid columns="3" 
+                         style= "width: 100%; background-color: #d2d2d2; text-align: center;">
+                <p:commandLink  action="usuarioGerenciar" value="Gerenciar usuários" 
+                                styleClass="linkMenu"/>
+                <p:commandLink  action="vacasGerenciar" value="Gerenciar vacas" 
+                                styleClass="linkMenu"/>
+                <p:commandLink action="index" value="Sair" 
+                               styleClass="linkMenu"/>
+            </h:panelGrid>
+        </h:form>
+        <h:panelGrid />
     </h:body>
 
 </html>

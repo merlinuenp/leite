@@ -10,16 +10,16 @@
         <h:form id="formPrincipal">
             <h:panelGrid  columns="2">
                 <p:outputLabel value="Login:"/>
-                <p:inputText value="#{novoUsuario.usuario.login}"/>
+                <p:inputText value="#{gerenciarUsuarioControle.usuario.login}"/>
                 <p:outputLabel value="Nome:"/>
-                <p:inputText value="#{novoUsuario.usuario.nome}"/>
+                <p:inputText value="#{gerenciarUsuarioControle.usuario.nome}"/>
                 <p:outputLabel value="Senha:"/>
-                <p:password value="#{novoUsuario.usuario.senha}"/>
+                <p:password value="#{gerenciarUsuarioControle.usuario.senha}"/>
                 
                 <p:commandButton value="cancelar"
                                 action="menu" />
                 <p:commandButton value="salvar" 
-                                 action="#{novoUsuario.salvar()}"/> 
+                                 action="#{gerenciarUsuarioControle.salvar()}"/> 
                 
             </h:panelGrid>            
         </h:form>
