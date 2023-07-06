@@ -1,7 +1,7 @@
 package dao;
 
-import java.util.List;
 import modelo.Usuario;
+import modelo.Vaca;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,6 +32,15 @@ public class DaoTest {
     @AfterEach
     public void tearDown() {
     }
+    
+//    @Test
+//    public void testInserirVaca() {
+//        Vaca vaca = new Vaca();
+//        vaca.setNome("Mumu");
+//        vaca.setRaca("Holandesa");
+//        Dao<Vaca> dao = new Dao(Vaca.class);
+//        dao.inserir(vaca);
+//    }
 
 //    @Test
 //    public void testInserirUsuario() {
