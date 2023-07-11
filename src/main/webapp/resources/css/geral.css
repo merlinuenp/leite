@@ -9,7 +9,13 @@ body{
     background-color: aliceblue;
 }
 
+.ui-button{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .linkMenu{
     color: #C71585;
-    border-bottom: 1px solid !important;
+    /*border-bottom: 1px solid !important; */
 }
+

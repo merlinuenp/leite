@@ -34,6 +34,7 @@ public class GerenciarUsuarioControle implements Serializable {
         }
         dao.inserir(novoUsuario);
         novoUsuario = new Usuario();
+        lista = dao.listarTodos(); 
         Util.mostrarSucesso("Usuário cadastrado");
         return null; 
     }

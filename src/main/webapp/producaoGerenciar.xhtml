@@ -15,18 +15,46 @@
         <h:panelGrid />
         <h:form >
             <h:panelGrid columns="4" 
-                         style="width: 100%; background-color: #d2d2d2; text-align: center;">
+                         style= "width: 100%; background-color: #d2d2d2; text-align: center;">
                 <p:commandLink  action="usuarioGerenciar" value="Gerenciar usuários" 
                                 styleClass="linkMenu"/>
                 <p:commandLink  action="vacasGerenciar" value="Gerenciar vacas" 
                                 styleClass="linkMenu"/>
                 <p:commandLink  action="producaoGerenciar" value="Gerenciar produção" 
-                                styleClass="linkMenu"/>
+                                styleClass="linkMenu"/>                    
                 <p:commandLink action="index" value="Sair" 
                                styleClass="linkMenu"/>
             </h:panelGrid>
         </h:form>
         <h:panelGrid />
-    </h:body>
 
+
+        <h:panelGrid columns="3" style=" width: 100%">  
+            <h:panelGrid style="border: 2px solid" >
+                Registrar Produção
+                <h:panelGrid columns="2">
+                    <p:outputLabel  value="Data:"/>
+                    <p:calendar />
+                    <p:outputLabel  value="Vaca"/>
+                    <p:inputText />
+                    <p:outputLabel  value="Litros: "/>
+                    <p:inputText />
+                    </h:panelGrid>
+                <p:outputPanel style=" width: 100%; text-align: center;">
+                    <p:commandButton  value="limpar"/>
+                    <p:commandButton value="salvar"/>
+                </p:outputPanel>
+            </h:panelGrid>
+            <h:panelGrid >
+                Produção por vaca
+            </h:panelGrid>
+            <h:panelGrid >
+                Produção por dia
+            </h:panelGrid>
+        </h:panelGrid>
+        <p/>
+
+
+
+    </h:body>
 </html>
