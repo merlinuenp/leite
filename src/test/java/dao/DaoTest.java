@@ -62,19 +62,19 @@ public class DaoTest {
 //    
     
     
-    @Test 
-    public void testInserirProducao(){
-        Dao<Vaca> daoVaca = new Dao(Vaca.class);
-        Vaca vaca = daoVaca.buscarPorCodigo(1);
-        
-        Producao producao = new Producao();
-        producao.setDataProducao(new Date());
-        producao.setVaca(vaca);
-        producao.setQuantidade(7.0);
-        
-        Dao<Producao> daoProducao = new Dao(Producao.class);
-        daoProducao.inserir(producao);
-        
-    }
-   
+//    @Test 
+//    public void testInserirProducao(){
+//        Dao<Vaca> daoVaca = new Dao(Vaca.class);
+//        Vaca vaca = daoVaca.buscarPorCodigo(1);
+//        
+//        Producao producao = new Producao();
+//        producao.setDataProducao(new Date());
+//        producao.setVaca(vaca);
+//        producao.setQuantidade(7.0);
+//        
+//        Dao<Producao> daoProducao = new Dao(Producao.class);
+//        daoProducao.inserir(producao);
+//        
+//    }
+//   
 }

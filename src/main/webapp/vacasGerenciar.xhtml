@@ -28,55 +28,53 @@
         </h:form>
         <h:panelGrid />
 
-        <p:fieldset legend="Novo usuário" toggleable="true" collapsed="true"
+        <p:fieldset legend="Nova vaca" toggleable="true" collapsed="true"
                     style="width: 80%; margin-left: 10%" >
             <h:form id="formNovo">
 
                 <h:panelGrid columns="2">                    
                     <h:outputLabel value="Nome:  " />
                     <p:inputText id="nome" 
-                                 value="#{gerenciarUsuarioControle.novoUsuario.nome}"
+                                 value="#{gerenciarVacaControle.novaVaca.nome}"
                                  required="true" requiredMessage="Nome obrigatório"/>                   
                     <h:outputLabel value="Login:  " />
                     <p:inputText id="login" 
-                                 value="#{gerenciarUsuarioControle.novoUsuario.login}"
-                                 required="true" requiredMessage="Login obrigatório"/>
-                    <h:outputLabel value="Senha" />
-                    <p:password value="#{gerenciarUsuarioControle.novoUsuario.senha}"
-                                required="true" requiredMessage="Senha obrigatória"/>
-                    <p:commandButton value="cancelar" immediate="true" action="menu"/>
-                    <p:commandButton value="salvar" 
-                                     action="#{gerenciarUsuarioControle.salvar()}"
+                                 value="#{gerenciarVacaControle.novaVaca.raca}"
+                                 required="true" requiredMessage="Raça obrigatória"/>                    
+                    <p:commandButton value="cancelar" icon="pi pi-directions-alt" immediate="true" action="menu"/>
+                    <p:commandButton value="salvar" icon="pi pi-check"
+                                     action="#{gerenciarVacaControle.salvar()}"
                                      update="formNovo, :formTabela" />
                 </h:panelGrid>
+                <p:messages showIcon="false" closable="true" />
 
             </h:form>
         </p:fieldset>
         <p/>
 
         <h:form id="formTabela" >
-            <p:dataTable id="tabelaUsuarios"
-                         value="#{gerenciarUsuarioControle.lista}"
+            <p:dataTable id="tabelaVacas"
+                         value="#{gerenciarVacaControle.lista}"
                          var="item"
-                         emptyMessage="Nenhum usuário cadastrado"
-                         style=" width: 80% !important; margin-left: 10%">
+                         emptyMessage="Nenhuma vaca cadastrada"
+                         style=" width: 80%; margin-left: 10%">
                 <p:column headerText="ID">
                     <h:outputText value="#{item.id}"/>
                 </p:column>
                 <p:column headerText="Nome">
                     <h:outputText value="#{item.nome}"/>
                 </p:column>
-                <p:column headerText="Login">
-                    <h:outputText value="#{item.login}"/>
+                <p:column headerText="Raça">
+                    <h:outputText value="#{item.raca}"/>
                 </p:column>
                 <p:column >
                     <p:commandLink value="alterar" />
                 </p:column>
                 <p:column >
                     <p:commandLink value="excluir" 
-                                   action="#{gerenciarUsuarioControle.excluir(item)}" 
+                                   action="#{gerenciarVacaControle.excluir(item)}" 
                                    update=":formTabela">
-                        <p:confirm header="Excluir usuário"
+                        <p:confirm header="Excluir vaca"
                                    message="Tem certeza? "/>
                     </p:commandLink>
                 </p:column>
