@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>Produção de Leite</title>
@@ -13,15 +14,19 @@
             <h:outputText style="font-size: 36px; color: whitesmoke" value="SysLeite"/>
         </h:panelGrid>
         <h:panelGrid />
-        <h:form >
-            <h:panelGrid columns="4" 
-                         style= "width: 100%; background-color: #d2d2d2; text-align: center;">
+        <h:form>
+            <h:panelGrid columns="6" 
+                         style="width: 100%; background-color: #d2d2d2; text-align: center;">
                 <p:commandLink  action="usuarioGerenciar" value="Gerenciar usuários" 
                                 styleClass="linkMenu"/>
                 <p:commandLink  action="vacasGerenciar" value="Gerenciar vacas" 
                                 styleClass="linkMenu"/>
                 <p:commandLink  action="producaoGerenciar" value="Gerenciar produção" 
-                                styleClass="linkMenu"/>                    
+                                styleClass="linkMenu"/>
+                <p:commandLink  action="producaoDiaria" value="Produção diária" 
+                                styleClass="linkMenu"/>
+                <p:commandLink  action="producaoPorVaca" value="Produção por vaca" 
+                                styleClass="linkMenu"/>
                 <p:commandLink action="index" value="Sair" 
                                styleClass="linkMenu"/>
             </h:panelGrid>
@@ -29,29 +34,47 @@
         <h:panelGrid />
 
 
-        <h:panelGrid columns="3" style=" width: 100%">  
-            <h:panelGrid style="border: 2px solid" >
-                Registrar Produção
+        <h:form id="formProducao">
+            <h:panelGrid style="border: 2px solid; width: 30%; margin-left: 35%" >
+                <h:panelGrid style="width:100%; text-align: center" >
+                    <p:outputLabel value="Registrar Produção" />
+                </h:panelGrid>
                 <h:panelGrid columns="2">
                     <p:outputLabel  value="Data:"/>
-                    <p:calendar />
-                    <p:outputLabel  value="Vaca"/>
-                    <p:inputText />
+                    <p:calendar id="data" pattern="dd/MM/yyyy"
+                                value="#{producaoGerenciar.novaProducao.dataProducao}" 
+                                required="true" requiredMessage="Data obrigatória"
+                                showOn="button"
+                                locale="pt"/>
+
+
+                    <p:outputLabel  value="Vaca"/>               
+                    <p:selectOneMenu id="comboVaca" converter="vacaConverter" 
+                                     required="true" requiredMessage="Selecione uma vaca"  
+                                     value="#{producaoGerenciar.novaProducao.vaca}" >
+                        <f:selectItem itemValue="#{null}" itemLabel="Escolha uma vaca" 
+                                      noSelectionOption="false"/>
+                        <f:selectItems value="#{producaoGerenciar.vacas}" 
+                                       var="v"
+                                       itemValue="#{v}"
+                                       itemLabel="#{v.nome}"/>
+                    </p:selectOneMenu>
+
+
                     <p:outputLabel  value="Litros: "/>
-                    <p:inputText />
-                    </h:panelGrid>
+                    <p:inputText value="#{producaoGerenciar.novaProducao.quantidade}"
+                                 required="true" requiredMessage="Quantidade obrigatória" />
+                </h:panelGrid>
                 <p:outputPanel style=" width: 100%; text-align: center;">
-                    <p:commandButton  value="limpar"/>
-                    <p:commandButton value="salvar"/>
+                    <p:commandButton  value="cancelar"
+                                      action="menu" immediate="true" />
+                    <p:commandButton value="salvar" style="margin-left: 15px"
+                                     action="#{producaoGerenciar.salvarProducao()}"
+                                     update="formProducao"/>
                 </p:outputPanel>
+                <p:messages showIcon="false" closable="true" />
             </h:panelGrid>
-            <h:panelGrid >
-                Produção por vaca
-            </h:panelGrid>
-            <h:panelGrid >
-                Produção por dia
-            </h:panelGrid>
-        </h:panelGrid>
+        </h:form>
         <p/>
 
 
