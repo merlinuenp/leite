@@ -39,18 +39,18 @@
                 <h:panelGrid columns="2">                    
                     <h:outputLabel value="Nome:  " />
                     <p:inputText id="nome" 
-                                 value="#{gerenciarUsuarioControle.novoUsuario.nome}"
+                                 value="#{usuarioGerenciaControle.novoUsuario.nome}"
                                  required="true" requiredMessage="Nome obrigatório"/>                   
                     <h:outputLabel value="Login:  " />
                     <p:inputText id="login" 
-                                 value="#{gerenciarUsuarioControle.novoUsuario.login}"
+                                 value="#{usuarioGerenciaControle.novoUsuario.login}"
                                  required="true" requiredMessage="Login obrigatório"/>
                     <h:outputLabel value="Senha" />
-                    <p:password value="#{gerenciarUsuarioControle.novoUsuario.senha}"
+                    <p:password value="#{usuarioGerenciaControle.novoUsuario.senha}"
                                 required="true" requiredMessage="Senha obrigatória"/>
                     <p:commandButton value="cancelar" immediate="true" action="menu"/>
                     <p:commandButton value="salvar" 
-                                     action="#{gerenciarUsuarioControle.salvar()}"
+                                     action="#{usuarioGerenciaControle.salvar()}"
                                      update="formNovo, :formTabela" />
                 </h:panelGrid>
 
@@ -60,7 +60,7 @@
 
         <h:form id="formTabela" >
             <p:dataTable id="tabelaUsuarios"
-                         value="#{gerenciarUsuarioControle.lista}"
+                         value="#{usuarioGerenciaControle.lista}"
                          var="item"
                          emptyMessage="Nenhum usuário cadastrado"
                          style=" width: 80% !important; margin-left: 10%">
@@ -78,7 +78,7 @@
                 </p:column>
                 <p:column >
                     <p:commandLink value="excluir" 
-                                   action="#{gerenciarUsuarioControle.excluir(item)}" 
+                                   action="#{usuarioGerenciaControle.excluir(item)}" 
                                    update=":formTabela">
                         <p:confirm header="Excluir usuário"
                                    message="Tem certeza? "/>

@@ -39,15 +39,15 @@
                 <h:panelGrid columns="2">                    
                     <h:outputLabel value="Nome:  " />
                     <p:inputText id="nome" 
-                                 value="#{gerenciarVacaControle.novaVaca.nome}"
+                                 value="#{vacaGerenciarControle.novaVaca.nome}"
                                  required="true" requiredMessage="Nome obrigatório"/>                   
-                    <h:outputLabel value="Login:  " />
-                    <p:inputText id="login" 
-                                 value="#{gerenciarVacaControle.novaVaca.raca}"
+                    <h:outputLabel value="Raça:  " />
+                    <p:inputText id="raca" 
+                                 value="#{vacaGerenciarControle.novaVaca.raca}"
                                  required="true" requiredMessage="Raça obrigatória"/>                    
                     <p:commandButton value="cancelar" icon="pi pi-directions-alt" immediate="true" action="menu"/>
                     <p:commandButton value="salvar" icon="pi pi-check"
-                                     action="#{gerenciarVacaControle.salvar()}"
+                                     action="#{vacaGerenciarControle.salvar()}"
                                      update="formNovo, :formTabela" />
                 </h:panelGrid>
                 <p:messages showIcon="false" closable="true" />
@@ -58,7 +58,7 @@
 
         <h:form id="formTabela" >
             <p:dataTable id="tabelaVacas"
-                         value="#{gerenciarVacaControle.lista}"
+                         value="#{vacaGerenciarControle.lista}"
                          var="item"
                          emptyMessage="Nenhuma vaca cadastrada"
                          style=" width: 80%; margin-left: 10%">
@@ -76,7 +76,7 @@
                 </p:column>
                 <p:column >
                     <p:commandLink value="excluir" 
-                                   action="#{gerenciarVacaControle.excluir(item)}" 
+                                   action="#{vacaGerenciarControle.excluir(item)}" 
                                    update=":formTabela">
                         <p:confirm header="Excluir vaca"
                                    message="Tem certeza? "/>

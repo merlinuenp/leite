@@ -35,49 +35,48 @@
 
 
         <h:form id="formProducao">
-            <h:panelGrid style="border: 2px solid; width: 30%; margin-left: 35%" >
+            <h:panelGrid style="width: 30%; margin-left: 35%" >
                 <h:panelGrid style="width:100%; text-align: center" >
-                    <p:outputLabel value="Registrar Produção" />
+                    <p:outputLabel value="Produção Diária" />
                 </h:panelGrid>
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="3">
                     <p:outputLabel  value="Data:"/>
                     <p:calendar id="data" pattern="dd/MM/yyyy"
-                                value="#{producaoGerenciarControle.novaProducao.dataProducao}" 
+                                value="#{producaoDiariaControle.dia}" 
                                 required="true" requiredMessage="Data obrigatória"
                                 showOn="button"
                                 locale="pt"/>
-
-
-                    <p:outputLabel  value="Vaca"/>               
-                    <p:selectOneMenu id="comboVaca" converter="vacaConverter" 
-                                     required="true" requiredMessage="Selecione uma vaca"  
-                                     value="#{producaoGerenciarControle.novaProducao.vaca}" >
-                        <f:selectItem itemValue="#{null}" itemLabel="Escolha uma vaca" 
-                                      noSelectionOption="false"/>
-                        <f:selectItems value="#{producaoGerenciarControle.vacas}" 
-                                       var="v"
-                                       itemValue="#{v}"
-                                       itemLabel="#{v.nome}"/>
-                    </p:selectOneMenu>
-
-
-                    <p:outputLabel  value="Litros: "/>
-                    <p:inputText value="#{producaoGerenciarControle.novaProducao.quantidade}"
-                                 required="true" requiredMessage="Quantidade obrigatória" />
+                    <p:commandButton value="buscar" 
+                                     action="#{producaoDiariaControle.buscarProducaoDiaria()}"
+                                     update=":formTabela" />
                 </h:panelGrid>
-                <p:outputPanel style=" width: 100%; text-align: center;">
-                    <p:commandButton  value="cancelar"
-                                      action="menu" immediate="true" />
-                    <p:commandButton value="salvar" style="margin-left: 15px"
-                                     action="#{producaoGerenciarControle.salvarProducao()}"
-                                     update="formProducao"/>
-                </p:outputPanel>
                 <p:messages showIcon="false" closable="true" />
             </h:panelGrid>
         </h:form>
+
+        <h:form id="formTabela" >
+            <p:dataTable id="tabelaProducao"
+                         value="#{producaoDiariaControle.lista}"
+                         var="item"
+                         emptyMessage="Nenhuma produção para esta data"
+                         style=" width: 80%; margin-left: 10%">
+                <p:column headerText="ID">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Vaca">
+                    <h:outputText value="#{item.vaca}"/>
+                </p:column>
+                <p:column headerText="Quantidade">
+                    <h:outputText value="#{item.quantidade}"/>
+                </p:column>                
+            </p:dataTable>
+
+            <p/>
+            <h:panelGrid style=" width: 80%; margin-left: 10%" columns="2">
+                <p:outputLabel value="Total: "/>
+                <p:outputLabel value="#{producaoDiariaControle.total}"/>
+            </h:panelGrid>
+        </h:form>
         <p/>
-
-
-
     </h:body>
 </html>

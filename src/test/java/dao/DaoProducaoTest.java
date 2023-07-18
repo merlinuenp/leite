@@ -1,8 +1,8 @@
 package dao;
 
-import java.util.Date;
 import java.util.List;
 import modelo.Producao;
+import modelo.Vaca;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,5 +41,17 @@ public class DaoProducaoTest {
 //            System.out.println(p.getVaca() + " - " + p.getQuantidade());
 //        }
 //    }
+    
+//    @Test
+//    public void testBuscarPorVaca(){
+//        DaoVaca daoVaca = new DaoVaca();
+//        Vaca v = daoVaca.buscarPorNome("Mumuzinha");
+//        List<Producao> lista = new DaoProducao().buscarPorVaca(v);
+//        for (Producao p : lista){
+//            System.out.println(p.getDataProducao() + " - " + p.getQuantidade());
+//        }
+//        
+//    }
+    
     
 }

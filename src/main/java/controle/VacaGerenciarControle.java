@@ -14,7 +14,7 @@ import util.Util;
 
 @Named
 @ViewScoped
-public class GerenciarVacaControle implements Serializable {
+public class VacaGerenciarControle implements Serializable {
     private Vaca novaVaca;
     private Dao<Vaca> dao; 
     private List<Vaca> lista; 

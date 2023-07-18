@@ -13,7 +13,7 @@ import util.Util;
 
 @Named
 @ViewScoped
-public class ProducaoGerenciar implements Serializable {
+public class ProducaoGerenciarControle implements Serializable {
 
     List<Vaca> vacas;
     Dao<Vaca> daoVaca;

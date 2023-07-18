@@ -38,7 +38,6 @@ public class DaoVaca implements Serializable{
     }
     
     public Vaca buscarPorNome(String nome){
-        EntityManager manager = JpaUtil.getEntityManager();
         TypedQuery<Vaca> query = 
                 (TypedQuery<Vaca>) manager.createQuery("SELECT v FROM Vaca v WHERE v.nome = :nome ");
         query.setParameter("nome", nome);

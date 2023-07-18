@@ -3,9 +3,9 @@ package dao;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import modelo.Producao;
+import modelo.Vaca;
 import util.JpaUtil;
 
 /**
@@ -26,5 +26,14 @@ public class DaoProducao {
         return lista; 
     }
     
+    public List<Producao> buscarPorVaca(Vaca vaca){
+        manager = JpaUtil.getEntityManager();
+        TypedQuery<Producao> query = 
+                (TypedQuery<Producao>) manager.createQuery("SELECT p FROM Producao p WHERE p.vaca = :vaca ");
+        query.setParameter("vaca", vaca);
+        List<Producao> lista = query.getResultList();
+        manager.close(); 
+        return lista; 
+    }
     
 }

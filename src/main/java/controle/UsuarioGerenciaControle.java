@@ -14,7 +14,7 @@ import util.Util;
 
 @Named
 @ViewScoped
-public class GerenciarUsuarioControle implements Serializable {
+public class UsuarioGerenciaControle implements Serializable {
     private Usuario novoUsuario; 
     private Dao<Usuario> dao; 
     private List<Usuario> lista; 
