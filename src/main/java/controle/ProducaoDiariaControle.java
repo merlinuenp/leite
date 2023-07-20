@@ -5,14 +5,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import modelo.Producao;
 
 
-
-public class ProducaoDiariaControle {
+@Named
+@ViewScoped
+public class ProducaoDiariaControle implements Serializable {
     private Date dia; 
     private List<Producao> lista;
     private Double total; 
